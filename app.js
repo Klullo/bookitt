@@ -19,6 +19,7 @@ app.use(express.static(__dirname + '/public'));
 
 //Define routes
 app.post('/send', (req, res) => {
+    
 
     //Create message
     const message = `
@@ -34,7 +35,7 @@ app.post('/send', (req, res) => {
         .messages
         .create({
         body: message,
-        to: myNumber,  // Text this number
+        to: myNumber, // Text this number
         from: '+14422449957' // From a valid Twilio number
     })
     .then(function(message){
@@ -42,17 +43,24 @@ app.post('/send', (req, res) => {
     });
 });
 
-app.post('/twilioReply')
+app.post('/twilioReply', (req, res) => {
+    const json = JSON.stringify(req.body, null, 2);
+
+    console.log(json);
+
+
     twilioClient
         .messages
         .create({
-        body: 'GOT REPLY',
+        body: req.body.body,
         to: myNumber,  // Text this number
         from: '+14422449957' // From a valid Twilio number
     })
     .then(function(message){
         res.send('ok');
     });
+
+});
 
 // Start server
 app.listen(port, function(){
