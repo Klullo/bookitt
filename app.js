@@ -17,10 +17,13 @@ app.use(bodyParser.json());
 app.use(express.static(__dirname + '/public'));
 
 
+app.get('/', (req, res) => {
+    res.sendFile(__dirname + '/public/index.html');
+});
+
 //Define routes
 app.post('/send', (req, res) => {
     
-
     //Create message
     const message = `
     Hi Keaton!
@@ -52,7 +55,7 @@ app.post('/twilioReply', (req, res) => {
     twilioClient
         .messages
         .create({
-        body: req.body.body,
+        body: "Someone replied",
         to: myNumber,  // Text this number
         from: '+14422449957' // From a valid Twilio number
     })

@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en" ng-app="app">
+
+<head>
+    <meta charset="utf-8">
+
+    <title>Bookitt</title>
+    <meta name="description" content="Bookitt">
+    <meta name="author" content="">
+
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
+</head>
+
+
+<body ng-controller="AppointmentController as appCtrl">
+    <h4>Inline</h4>
+    <div uib-datepicker ng-model="appCtrl.stuff"></div>
+
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+
+    <script src="app/app.module.js"></script>
+    <script src="app/core/appointment.factory.js"></script>
+    <script src="app/appointment/appointment.controller.js"></script>
+</body>
+
+</html>
