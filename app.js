@@ -3,10 +3,10 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const Twilio = require('twilio');
 const app = express();
-const accountSid = process.env.TWILIO_ACCOUNT_SID; //'ACf326efb6b2a556febfd6c30cb14d3286'
-const authToken = process.env.TWILIO_AUTH_TOKEN;  //'e962eb1ccb840055789d093d328e6572'
+const accountSid = process.env.TWILIO_ACCOUNT_SID; 
+const authToken = process.env.TWILIO_AUTH_TOKEN;  
 const twilioClient = new Twilio(accountSid, authToken);
-const myNumber = process.env.TWILIO_NUMBER; //'+19519702640'
+const myNumber = process.env.TWILIO_NUMBER; 
 
 
 //Port
