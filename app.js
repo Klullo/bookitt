@@ -3,10 +3,10 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const Twilio = require('twilio');
 const app = express();
-const accountSid = process.env.TWILIO_ACCOUNT_SID; 
-const authToken = process.env.TWILIO_AUTH_TOKEN;  
+const accountSid = process.env.TWILIO_ACCOUNT_SID;
+const authToken = process.env.TWILIO_AUTH_TOKEN;
 const twilioClient = new Twilio(accountSid, authToken);
-const myNumber = process.env.TWILIO_NUMBER; 
+const myNumber = process.env.TWILIO_NUMBER;
 
 
 //Port
@@ -23,7 +23,7 @@ app.get('/', (req, res) => {
 
 //Define routes
 app.post('/send', (req, res) => {
-    
+
     //Create message
     const message = `
     Hi Keaton!
@@ -37,13 +37,13 @@ app.post('/send', (req, res) => {
     twilioClient
         .messages
         .create({
-        body: message,
-        to: myNumber, // Text this number
-        from: '+14422449957' // From a valid Twilio number
-    })
-    .then(function(message){
-        res.send('ok');
-    });
+            body: message,
+            to: myNumber, // Text this number
+            from: '+14422449957' // From a valid Twilio number
+        })
+        .then(function (message) {
+            res.send('ok');
+        });
 });
 
 app.post('/twilioReply', (req, res) => {
@@ -51,26 +51,19 @@ app.post('/twilioReply', (req, res) => {
 
     console.log(json);
 
-
     twilioClient
         .messages
         .create({
-        body: "Someone replied",
-        to: myNumber,  // Text this number
-        from: '+14422449957' // From a valid Twilio number
-    })
-    .then(function(message){
-        res.send('ok');
-    });
-
+            body: "Someone replied",
+            to: myNumber, // Text this number
+            from: '+14422449957' // From a valid Twilio number
+        })
+        .then(function (message) {
+            res.send('ok');
+        });
 });
 
 // Start server
-app.listen(port, function(){
+app.listen(port, function () {
     console.log(`Server is listening on port ${port}`);
 });
-
-
-
-
-

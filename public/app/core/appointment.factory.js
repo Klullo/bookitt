@@ -17,9 +17,7 @@
         function createAppointment(appointment) { 
             return $http
                 .post('/send', appointment)
-                .then(response => response.data); 
-
-               
+                .then(response => response.data);     
         }
     }
 })();
